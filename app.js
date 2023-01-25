@@ -21,15 +21,17 @@ const colorPalette = {
 };
 const colorPaletteKeys = Object.keys(colorPalette); //Object Keylerini bir arraye attım
 //
+
 const getPokemon = async (i) => {
   const getPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
   const pokemonGetting = await getPoke.json();
+  console.log(pokemonGetting);
   pokemonCardCreate(pokemonGetting);
 };
 //API alınıyor
-function getAnPokemonArray() {
+async function getAnPokemonArray() {
   for (let i = 1; i < count; i++) {
-    getPokemon(i);
+    await getPokemon(i);
   }
 }
 getAnPokemonArray();
